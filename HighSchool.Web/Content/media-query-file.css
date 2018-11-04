@@ -1,0 +1,82 @@
+﻿@media (max-width: 1250px) {
+    v #home .landing-text .text-one {
+        font-size: 230%;
+    }
+
+    #home .landing-text .text-two {
+        font-size: 210%;
+    }
+
+    #home .landing-text #btn-login {
+        border-radius: 15px;
+        padding: 8px 50px;
+        font-size: 14px;
+    }
+    /*End media query of landing-page*/
+}
+
+@media (max-width: 940px) {
+    /*Start media query of landing-page*/
+    #home .landing-text {
+        top: 300px;
+        left: 0%;
+    }
+
+    #secondParagraph {
+        font-size: 200%;
+    }
+
+    #thirdParagraph {
+        font-size: 300%;
+    }
+    /*End media query of landing-page*/
+}
+
+@media (max-width: 768px) {
+    /*Start media query of landing-page*/
+    #home .landing-text .text-one {
+        font-size: 130%;
+    }
+
+    #home .landing-text .text-two {
+        font-size: 110%;
+    }
+
+    #secondParagraph {
+        font-size: 150%;
+    }
+
+    #thirdParagraph {
+        font-size: 200%;
+    }
+    /*End media query of landing-page*/
+    /*------------------------------*/
+    /*-----------------------------*/
+    /*Start media query of login-page*/
+    .header {
+        padding: 1px 0;
+    }
+
+        .header h6 {
+            font-size: 16px;
+        }
+
+    .login-form h1 {
+        font-size: 24px;
+        margin-bottom: 50px;
+    }
+
+    .login-form input[type="text"], input[type="password"] {
+        font-size: 13px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .login-form input[type="submit"] {
+        font-size: 13px;
+    }
+
+    .login-form .btn-lg {
+        padding: 8px;
+    }
+    /*End media query of login-page*/
+}

@@ -1,0 +1,26 @@
+﻿body {
+    background-color: #fff;
+    font-family: Lato,"Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.terms-container{
+    text-align:left;
+    margin:0 auto;
+    background-color:#f1f1f1;
+    padding: 10px;
+}
+
+.submit{
+    padding: 8px 40px;
+    background: #3c3ca8;
+    color:#fff;
+    margin: 10px;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+}

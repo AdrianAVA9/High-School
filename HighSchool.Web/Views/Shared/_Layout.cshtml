@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My High School aplication</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("scripts", required: false)
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet"/>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("HighSchool", "Index", "Home", new { @class = "navbar-brand brand" })
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Login-Owner password flow", "Login", "Home")</li>
+                    <li>@Html.ActionLink("Login-Hybrid-Flow CHANGE-THE-STARTUP-PROJECT-TO-USE-IT", "HomePage", "Home")</li>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <div id="home">
+            <div class="landing-text">
+                <h1 class="text-one">WELCOME TO HIGH SCHOOL</h1>
+                <h2 class="text-two">ENJOY OF OUR COURSE</h2>
+                @Html.ActionLink("Login", "Login", "Home", new { @class = "btn btn-default btn-lg", @id = "btn-login" })
+            </div>
+        </div>
+    }
+
+    <div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/lib")
+    @Scripts.Render("~/bundles/app")
+
+
+
+
+
+
+
+
+
+    <script>
+        $(document).ready(function () {
+
+            var settings = {
+                authority: 'http://localhost:49875',
+                client_id: 'highschool_implicit',
+                popup_redirect_uri: 'http://localhost:56622/popup',
+                response_type: 'token id_token',
+                scope: 'openid profile read',
+                filterProtocolClaims: true
+            };
+
+            var manager = new Oidc.UserManager(settings);
+            var user;
+
+            manager.events.addUserLoaded(function (loadedUser) {
+                user = loadedUser;
+                display('.js-user', user);
+                localStorage.setItem('User', JSON.stringify(user));
+            });
+
+            $('.js-login').click(function () {
+                manager
+                    .signinPopup()
+                    .then(function (userInSession) {
+                        localStorage.setItem('User', JSON.stringify(userInSession));
+                    })
+                    .catch(function (error) {
+                        console.log('error while loggin in through the popup', error);
+                    });
+            });
+        });
+    </script>
+</body>
+</html>
